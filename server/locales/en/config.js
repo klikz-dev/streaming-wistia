@@ -13,7 +13,7 @@ configs.development = {
 
   siteName: 'ASCD Streaming Video',
 
-  featuredMediaIds: [83590968, 83590966, 83590900, 83590664],
+  featuredMediaIds: [83588008, 83587727, 83587340, 83587233],
 
   categories: [],
 

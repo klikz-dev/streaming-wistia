@@ -10,16 +10,16 @@
         <li style="width: {{divide 100 ../videos.length}}%">
           <div class="bcc-carousel-body">
             <div class="bcc-carousel-thumb">
-              <img data-src="{{ assets.6.url }}" alt="{{ name }}" src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+              <img data-src="{{ originalURL thumbnail.url }}" alt="{{ name }}" src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
             </div>
             
             <div class="carousel-hero-meta marketingoverlay">            
-              <a class="carousel-hero-title" href="/{{this.project.id}}/{{this.id}}">{{name}}</a>
+              <a class="carousel-hero-title" href="/recommended/{{this.id}}">{{name}}</a>
               <div class="clear"></div>
-              <a class="carousel-hero-description" href="/{{this.project.id}}/{{this.id}}" title="{{name}}"></a>
+              <a class="carousel-hero-description" href="/recommended/{{this.id}}" title="{{name}}"></a>
               <div class="clear"></div>
               <div class="carousel-hero-cta">
-                <a href="/{{this.project.id}}/{{this.id}}">
+                <a href="/recommended/{{this.id}}">
                   <i class="fa fa-play-circle-o"></i> {{{__ "Watch Now"}}}
                 </a>
               </div>

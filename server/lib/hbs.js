@@ -49,6 +49,9 @@ module.exports = function (app) {
             parseInt(value - parseInt(value / 60) * 60).toString()
           );
         },
+        originalURL: function (value) {
+          return value.split('?')[0];
+        },
         dateFormat: function (value) {
           return value.split('T')[0];
         },
