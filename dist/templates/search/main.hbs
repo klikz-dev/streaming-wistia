@@ -1,0 +1,27 @@
+{{#contentFor "pageName"}}search{{/contentFor}}
+
+<main>
+  {{#unless videos.length}}
+    <div class="no-results">
+      <p>{{{__ "No videos were found for the search term <em>%s</em>." keyword}}}</p>
+    </div>
+  {{/unless}}
+
+  {{#if videos.length}}
+    <div class="pagination-bar pagination-top">
+      <div class="pagination-bar-inner">
+        <h1>{{{__ "Search results for <em>%s</em>." keyword}}}</h1>
+        {{> components/breadcrumb/breadcrumb}}
+        {{> components/pagination/pagination}}
+      </div>
+    </div>
+
+    {{> components/video-list/video-list}}
+
+    <div class="pagination-bar pagination-bottom">
+      <div class="pagination-bar-inner">
+        {{> components/pagination/pagination}}
+      </div>
+    </div>
+  {{/if}}
+</main>

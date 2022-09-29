@@ -1,0 +1,68 @@
+<header class="header">
+<div class="header-top">
+  <div class="header-top-content-left">
+    <span>{{{__ "LEARN. TEACH. LEAD."}}}</span>
+  </div>
+  <div class="header-top-content-right">
+    <!--<span>{{{__ "NAVIGATE ASCD "}}}<i class="fa fa-plus"></i></span>-->
+    <div class="sec_headerbar">
+        <div class="container">
+            <div class="ascdsiteslist">
+              <a class="menu-toggle" href="#">
+                <span>Navigate ASCD<i></i></span>
+              </a>
+              <ul>
+                <li><a href="http://www.ascd.org" title="View ASCD.org" target="_blank">ASCD.org</a></li>
+                <li><a href="http://shop.ascd.org" title="View ASCD Shop" target="_blank">Shop</a></li>
+                <li><a href="http://pdo.ascd.org" title="View PD Online" target="_blank">PD Online</a></li>
+                <li><a href="http://myteachsource.ascd.org" title="View myTeachSource" target="_blank">myTeachSource</a></li>
+                <li><a href="http://www.ascd.org/activate/welcome.aspx" title="View Activate" target="_blank">Activate</a></li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="header-bottom">
+  <div class="header-left">
+    <div class="browse-block">
+      <a href="#" class="button-ascd nav-hamburger-browse">
+        <i class="fa fa-bars"></i>
+        <span>{{{__ "Browse Videos"}}}</span>
+      </a>
+    </div>
+
+      <div class="header-title">
+        <a href="{{ linkTo header.url }}"><img class="branding-logo"></a>
+      </div>
+  </div>
+  <div class="header-right">
+      {{#if user.isLoggedIn}}
+        <div class="button-set nav-buttons">
+          <li>
+            {{> components/logout/logout}}
+          </li>
+          <li>
+            {{> components/my-account/my-account}}
+          </li>
+        </div>
+      {{else}}
+        <div class="button-set nav-buttons">
+          <li>
+            <a href="/user/login" class="leftline-button-dark">
+              <span>{{{__ "LOG IN"}}}</span>
+            </a>
+          </li>
+          <!-- <li>
+            <a href="/packages" class="leftline-button-dark">
+              <span>{{{__ "SUBSCRIBE"}}}</span>
+            </a>
+          </li> -->
+        </div>
+      {{/if}}
+      {{> components/user-profile/user-profile}}
+      {{!-- {{> components/search-form/search-form}} --}}
+  </div>
+
+</div>
+</header>

@@ -26,20 +26,38 @@ module.exports.detailPage = async function (req, res, next) {
     return res.redirect(req.path);
   }
 
+  const config = settings.getLocaleSettings(req.locale);
+
   const sortBy = req.query.sort || 'date';
-  var currentPage = req.query.page ? parseInt(req.query.page, 10) : 1;
+  const currentPage = req.query.page ? parseInt(req.query.page, 10) : 1;
 
-  const projectId = req.params.projectId;
+  const tagId = req.params.tagId;
+  const tagData = config.tags[tagId];
 
-  const project = await cmsApi.getProject(projectId);
+  const webstreamsData = await cmsApi.getProject(6568576);
 
-  const pagination = project.paginate(24, currentPage);
+  const tagVideos = [];
+
+  if (tagData) {
+    for (let j = 0; j < tagData.medias.length; j++) {
+      const mediaId = tagData.medias[j];
+      const wistiaMediaData = webstreamsData.videos.filter(
+        (media) => media.id == mediaId
+      )[0];
+
+      tagVideos.push(wistiaMediaData);
+    }
+  }
+
+  webstreamsData.videos = tagVideos;
+
+  const pagination = webstreamsData.paginate(24, currentPage);
   const videos = pagination.getVideos();
 
   var videoId = req.params.videoId;
 
-  if (!videoId && project.videos.length) {
-    videoId = project.videos[0].id;
+  if (!videoId && webstreamsData.videos.length) {
+    videoId = webstreamsData.videos[0].id;
   }
 
   // If we still don't have a video id, 404
@@ -77,11 +95,11 @@ module.exports.detailPage = async function (req, res, next) {
   res.render('detail/main', {
     video: video,
     videos: videos,
-    projectId: project.id,
-    projectName: project.name,
+    projectId: tagId,
+    projectName: tagData.name,
     pagination: {
       ...pagination,
-      isSortable: project.isSortable(),
+      isSortable: webstreamsData.isSortable(),
       sortBy: sortBy,
       isDateActive: sortBy === 'date',
       isNameActive: sortBy === 'name',

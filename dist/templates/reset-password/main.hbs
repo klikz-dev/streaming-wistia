@@ -1,0 +1,36 @@
+{{#contentFor "pageName"}}resetpassword{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <form class="form reset-password-form" action="{{linkTo "/user/reset"}}" method="post">
+    <input type="hidden" name="slug" value="{{ slug }}">
+    <input type="hidden" name="email" value="{{ email }}">
+
+    <h1 class="form-title">{{{__ "Reset Password"}}}</h1>
+    <p class="form-intro">{{{__ "Please provide a new password for your account."}}}</p>
+
+    <fieldset>
+      <legend>{{{__ "Choose a new Password"}}}</legend>
+
+      <div class="form-row">
+        <label>{{{__ "E-mail Address"}}}</label>
+        {{ email }}
+      </div>
+
+      <div class="form-row">
+        <label>{{{__ "Password"}}}</label>
+        <input type="password" name="password" value="{{ password }}" autofocus required>
+      </div>
+
+      <div class="form-row">
+        <label>{{{__ "Confirm Password"}}}</label>
+        <input type="password" name="confirm" value="{{ confirm }}" required>
+      </div>
+    </fieldset>
+
+    <footer>
+      <button type="submit" class="button-light">{{{__ "Submit"}}}</button>
+    </footer>
+  </form>
+</main>

@@ -1,0 +1,11 @@
+{{#contentFor "pageName"}}category{{/contentFor}}
+
+<main>
+  {{> components/breadcrumb/breadcrumb}}
+
+  <div class="carousel-wrapper">
+    {{#each carousels}}
+      {{> components/carousel-standard/carousel-standard}}
+    {{/each}}
+  </div>
+</main>

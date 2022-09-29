@@ -1,0 +1,16 @@
+<div class="sort-dropdown dropdown">
+  <a class="sort-dropdown-button button-light dropdown-button">&nbsp;</a>
+
+  <ul class="dropdown-menu">
+    <li>
+      <a class="button-light{{#if isDateActive}} is-active{{/if}}" href="{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}page=1&sort=date">
+        {{{__ "Date Added"}}}
+      </a>
+    </li>
+    <li>
+      <a class="button-light{{#if isNameActive}} is-active{{/if}}" href="{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}page=1&sort=name">
+        {{{__ "Popularity"}}}
+      </a>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,10 @@
+{{#contentFor "pageName"}}packages{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <div class="form">
+    <h1 class="form-title">{{{__ "Packages"}}}</h1>
+    {{> components/package-list/package-list page="packages"}}
+  </div>
+</main>

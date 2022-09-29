@@ -1,0 +1,33 @@
+
+<div class="upload-container">
+  <div class="upload-zone dropzone">
+    <div class="upload-zone-icon"><i class="fa fa-arrow-circle-o-up"></i></div>
+    <div class="upload-zone-text">{{{__ "Drag Your Videos Here"}}}</div>
+    <div class="upload-zone-or">{{{__ "-or-"}}}</div>
+    <button class="button-dark upload-zone-alt">{{{__ "Browse for Videos"}}}</button>
+  </div>
+  <div class="preview-container"></div>
+</div>
+
+<div id="preview-template" style="display:none">
+  <div class="dz-preview upload-preview">
+
+    <div class="upload-preview-header">
+      <div class="dz-details">
+        <div class="dz-filename"><span data-dz-name></span></div>
+      </div>
+      <button class="button-light">{{{__ "Cancel"}}}</button>
+    </div>
+
+    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+    <div class="dz-error-message"><span data-dz-errormessage></span></div>
+    <div class="dz-upload-complete">{{{__ "Upload complete! "}}} <i class="fa fa-check"></i></div>
+  </div>
+</div>
+
+<div id="errors" style="display:none">
+  <div id="invalid">{{{__ "You can't upload files of this type."}}}</div>
+  <div id="size">{{{__ "This file is too big."}}}</div>
+  <div id="upload-err">{{{__ "There was an error with your upload. Please try again." }}}</div>
+</div>
+

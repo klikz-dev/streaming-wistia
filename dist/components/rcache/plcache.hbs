@@ -1,0 +1,25 @@
+<div>
+      <h4>playlist id={{playlistId}}</h4>
+      <p>videos={{videos.length}}</p>
+      <ul>{{#each videos}}<li>{{id}}:{{description}}</li>{{/each}}</ul>
+      <p>cached:{{cached}}</p>
+      <p>cache key:{{cacheKey}}</p>
+      {{#unless ok}}
+        <a href='/rcache?ckey={{cacheKey}}'>delete the cache</a>
+        <a href='/rcache?ckey={{cacheKey}}&rkey=yes'>refresh the cache</a>
+      {{/unless}}
+
+      {{#if dataCached}}
+      <p>videos cached={{dataCached.length}}</p>
+      <ul>{{#each dataCached}}<li>{{id}}:{{description}}</li>{{/each}}</ul>
+      {{/if}}
+      <h5>ok={{ok}}</h5>
+      {{#if diff}}
+      <p>videos not cached={{diff.length}}</p>
+      <ul>{{#each diff}}<li>{{this}}</li>{{/each}}</ul>
+      {{/if}}
+      {{#if diff1}}
+      <p>videos cached but not in playlist={{diff1.length}}</p>
+      <ul>{{#each diff1}}<li>{{this}}</li>{{/each}}</ul>
+      {{/if}}
+</div>

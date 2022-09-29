@@ -1,0 +1,13 @@
+{{#@root.breadcrumb}}
+<nav class="breadcrumb{{#fixed}} is-fixed{{/fixed}}">
+  <div class="breadcrumb-container">
+    {{#items}}
+      {{#if url}}
+        <a href="{{linkTo url}}">{{ title }}</a>
+      {{else}}
+        <a>{{ title }}</a>
+      {{/if}}
+    {{/items}}
+  </div>
+</nav>
+{{/@root.breadcrumb}}

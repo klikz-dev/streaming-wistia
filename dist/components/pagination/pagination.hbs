@@ -1,0 +1,51 @@
+<div class="pagination">
+  {{#@root.pagination}}
+  {{#if isSortable}}
+    <div class="pagination-sort">
+      <p class="pagination-sort-label">{{{__ "Sort By"}}}</p>
+
+      <ul class="pagination-sort-links button-set">
+        <li>
+          <a data-predicate="date" class="button-light{{#if isDateActive}} is-active{{/if}}" href="{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}page=1&sort=date">
+            {{{__ "Date Added"}}}
+          </a>
+        </li>
+        <li>
+          <a data-predicate="popularity" class="button-light{{#if isNameActive}} is-active{{/if}}" href="{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}page=1&sort=name">
+            {{{__ "Name"}}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  {{/if}}
+  <div class="pagination-pages">
+    <p class="pagination-pages-label">
+      <span class="pagination-start-index">{{ startIndex }}</span> &#8208;
+      <span class="pagination-end-index">{{ endIndex }}</span> {{{__ "of"}}}
+      <span class="pagination-recordcount">{{ totalItems }}</span> {{{__ "Videos"}}}
+    </p>
+
+    {{#showPagination}}
+      <a href="{{#if isPrevEnabled}}{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}{{#if sortBy}}sort={{ sortBy }}&{{/if}}page={{ prevPage }}{{else}}#{{/if}}" class="pagination-prev button-light{{#unless isPrevEnabled}} is-disabled{{/unless}}">
+        <i class="fa fa-chevron-left"></i>
+      </a>
+
+      <ul class="pagination-pageset button-set">
+        {{#pageNumbers}}
+          <li class="{{#if isHidden}}is-hidden{{/if}} {{#if isFirstVisible}}button-first-visible{{/if}} {{#if isLastVisible}}button-last-visible{{/if}}">
+            <a class="button-light{{#if isActive}} is-active{{/if}}" href="{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}page={{ number }}&sort={{ ../sortBy }}">
+              {{ number }}
+            </a>
+          </li>
+        {{/pageNumbers}}
+      </ul>
+
+      <a href="{{#if isNextEnabled}}{{ rootURL }}?{{#if @root.keyword}}keyword={{ @root.keyword }}&{{/if}}{{#if sortBy}}sort={{ sortBy }}&{{/if}}page={{ nextPage }}{{else}}#{{/if}}" class="pagination-next button-light{{#unless isNextEnabled}} is-disabled{{/unless}}">
+        <i class="fa fa-chevron-right"></i>
+      </a>
+    {{/showPagination}}
+
+    {{> components/spinner/spinner}}
+  </div>
+  {{/@root.pagination}}
+</div>

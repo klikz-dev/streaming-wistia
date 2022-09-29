@@ -1,0 +1,37 @@
+{{#contentFor "pageName"}}detail{{/contentFor}}
+
+{{#contentFor "scripts"}}
+  <script src="{{ config.playerUrl }}"></script>
+{{/contentFor}}
+
+{{#contentFor "meta"}}
+  {{> components/social-metatag/social-metatag}}
+{{/contentFor}}
+
+<main>
+  {{#video}}
+    {{> components/hero-player/hero-player }}
+  {{/video}}
+
+  <div class="pagination-bar pagination-top sticky-container">
+    <div class="sticky-container-content">
+      <h3>View all {{projectName}}</h3>
+      {{> components/breadcrumb/breadcrumb}}
+      {{> components/pagination/pagination}}
+    </div>
+  </div>
+
+  {{#title}}
+    <div class="video-grid-heading">
+      <h2>{{ title }}</h2>
+    </div>
+  {{/title}}
+
+  {{> components/video-grid/video-grid}}
+
+  <div class="pagination-bar pagination-bottom">
+    <div class="pagination-bar-inner">
+      {{> components/pagination/pagination}}
+    </div>
+  </div>
+</main>

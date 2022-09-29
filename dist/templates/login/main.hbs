@@ -1,0 +1,47 @@
+{{#contentFor "pageName"}}login{{/contentFor}}
+
+<main class="centered">
+  <form class="form login-form" action="{{linkTo "/user/login"}}" method="post" novalidate>
+    {{> components/flash/flash}}
+
+    <header>
+      <p class="form-title">{{{__ "Sign in"}}}</p>
+    </header>
+
+    <div class="social-login">
+      <a class="button-social button-facebook" href="/user/login/facebook">
+        <i class="fa fa-facebook"></i>
+        <span>{{{__ "Sign in with Facebook"}}}</span>
+      </a>
+      <!-- <a class="button-social button-twitter" href="">
+        <i class="fa fa-twitter"></i> {{{__ "Sign in with Twitter"}}}
+      </a>
+      <a class="button-social button-google" href="">
+        <i class="fa fa-google"></i> {{{__ "Sign in with Google"}}}
+      </a> -->
+    </div>
+
+    <p class="separator">&mdash;&nbsp; {{{__ "or, login with your YourBrand TV account"}}} &nbsp;&mdash;</p>
+
+    <fieldset>
+      <div class="form-row">
+        <label for="login-email">{{{__ "E-mail Address"}}}</label>
+        <input type="email" name="email" id="login-email" value="{{ email }}" autofocus required>
+      </div>
+
+      <div class="form-row">
+        <label for="login-password">{{{__ "Password"}}}</label>
+        <input type="password" name="password" id="login-password" required>
+      </div>
+    </fieldset>
+
+    <footer>
+      <button type="submit" class="button-light button-large">{{{__ "Sign in"}}}</button>
+
+      <nav>
+        <p><a href="{{linkTo "/user/register"}}">{{{__ "Register"}}}</a></p>
+        <p><a href="{{linkTo "/user/recover"}}">{{{__ "Forgot Password?"}}}</a></p>
+      </nav>
+    </footer>
+  </form>
+</main>

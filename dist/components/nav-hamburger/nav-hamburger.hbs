@@ -1,0 +1,41 @@
+<div class="nav-hamburger-overlay"></div>
+
+<nav class="nav-hamburger">
+  <div class="nav-hamburger-close">
+    <a class="button-dark" href="#">&nbsp;</a>
+  </div>
+
+  <ul class="nav-hamburger-menu">
+    {{#each taxonomy.categories}}
+      <li class="nav-hamburger-menu-item{{#if categories}} has-submenu{{/if}}">
+        <div>
+          <span></span><a href="/{{slug}}">{{ this.title }}</a>
+        </div>
+
+        {{#if categories}}
+          <ul class="nav-hamburger-sub-menu">
+            {{#each categories}}
+              <li class="nav-hamburger-menu-item{{#if categories}} has-submenu{{/if}}">
+                <div>
+                  <span></span><a href="/{{slug}}">{{ title }}</a>
+                </div>
+
+                {{#if categories}}
+                  <ul class="nav-hamburger-sub-menu">
+                    {{#each categories}}
+                      <li class="nav-hamburger-menu-item{{#if categories}} has-submenu{{/if}}">
+                        <div>
+                          <span></span><a href="/{{slug}}">{{ title }}</a>
+                        </div>
+                      </li>
+                    {{/each}}
+                  </ul>
+                {{/if}}
+              </li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</nav>

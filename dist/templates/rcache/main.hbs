@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>rcahe</title>
+    <script src="/scripts/common.js"></script>
+  </head>
+
+  <body>
+      qs={{qs}}
+      <h4>featured</h4>
+      {{#featured}}
+        {{> components/rcache/plcache}}
+      {{/featured}}
+      <br/>
+
+      <h4>free</h4>
+      {{#free}}
+        {{> components/rcache/plcache}}
+      {{/free}}
+      <br/>
+
+      <h4>plist:{{plist.length}}</h4>
+      <p>carouselItems:{{carouselItems.length}}<ul>
+      {{#each carouselItems}}
+        {{#this}}
+          {{> components/rcache/plcache}}
+        {{/this}}
+      {{/each}}
+      </ul>
+      </p>
+
+</body>
+</html>

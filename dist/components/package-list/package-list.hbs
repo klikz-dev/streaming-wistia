@@ -1,0 +1,56 @@
+<div class="packages">
+  {{#each plans}}
+    <div class="package">
+      <p class="package-name">{{ name }}</p>
+      <p class="package-desc">{{ description}}</p>
+
+      {{#unless hidePricingDescription }}
+          {{#if isRental}}
+            {{#subscription}}
+                <p class="package-expired">{{{__ "Your rental to this package started on %s. You will have access until %s. If you wish to renew, please do so after this date." startedAtFormatted periodEndFormatted}}}</p>
+            {{/subscription}}
+          {{else}}
+            {{#subscription}}
+              {{#isCanceled}}
+                <p class="package-expired">{{{__ "Your subscription to this package was canceled on %s. You will continue to have access until %s. If you wish to resubscribe, please do so after this date." canceledAtFormatted periodEndFormatted}}}</p>
+              {{/isCanceled}}
+            {{/subscription}}
+          {{/if}}
+      {{/unless}}
+
+      <div class="package-footer">
+        {{#unless hidePricingDescription }}
+          <p class="package-price">{{ currencyReadable }}</p>
+        {{/unless}}
+        {{#if this.video}}
+         <a class="button-light button-large package-cta" href="{{linkToVideo video=this.video}}">{{{__ "Watch now" }}}</a>
+        {{/if}}
+        {{#eq role "user"}}
+          {{#with button}}
+            <a class="button-light button-large package-cta" href="{{linkTo url}}">{{ text }}</a>
+          {{/with}}
+        {{/eq}}
+      </div>
+    </div>
+  {{/each}}
+
+  {{#if plans}}
+    {{#eq page "my-packages"}}
+      {{#subscribed plans}}
+        <p class="package-empty-title">{{{__ "You have rented the following videos."}}}</p>
+        <p class="package-empty-desc">{{{__ "Browse videos to explore and rent more content."}}}</p>
+      {{else}}
+        <p class="package-empty-title">{{{__ "You have no rented videos at this time."}}}</p>
+        <p class="package-empty-desc">{{{__ "Browse videos to explore our library and begin renting content."}}}</p>
+      {{/subscribed}}
+      <div class="package-footer">
+        <p class="package-price"></p>
+      </div>
+    {{/eq}}
+  {{else}}
+    <p class="package-empty-title">{{{__ "You have no rented videos at this time."}}}</p>
+    <p class="package-empty-desc">{{{__ "Browse videos to explore our library and begin renting content."}}}</p>
+    <p class="package-empty-footer">
+    </p>
+  {{/if}}
+</div>

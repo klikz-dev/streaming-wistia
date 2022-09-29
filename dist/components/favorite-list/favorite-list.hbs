@@ -1,0 +1,11 @@
+<div class="fvideos">
+  {{#each videos}}
+    <div class="fvideo">
+      <img class="video-thumb-thumbnail-img" src="{{ images.thumbnail.src }}" alt="{{ name }}">
+      <p class="fvideo-name">
+         <a class="button-light button-large package-cta" href="/watch/view-all/{{id}}/{{slug}}">{{ name }}</a>
+      </p>
+    </div>
+  {{/each}}
+</div>
+

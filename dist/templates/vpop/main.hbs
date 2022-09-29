@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>VPOP</title>
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+    <link rel="SHORTCUT ICON" href="//www.ascd.org/Portals/0/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <script>
+      window.bootstrap = {{{ bootstrap }}};
+    </script>
+	  <link rel="stylesheet" href="/styles/ascd.css">
+    <link rel="stylesheet" href="/styles/vpop.css">
+  </head>
+
+  <body>
+
+<div class="hero-player">
+  <div class="hero-player-content" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    {{> components/video-player/video-player}}
+  </div>
+</div>
+
+   <script src="{{ config.playerUrl }}"></script>
+
+    <script src="/scripts/common.js"></script>
+    <script src="/scripts/page-vpop.js"></script>
+
+  </body>
+</html>

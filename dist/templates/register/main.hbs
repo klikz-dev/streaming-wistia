@@ -1,0 +1,37 @@
+{{#contentFor "pageName"}}register{{/contentFor}}
+
+<main class="centered">
+  <form class="form register-form" action="{{linkTo "/user/register"}}" method="post" novalidate>
+    <h1 class="form-title">{{{__ "Register"}}}</h1>
+    <p class="form-intro">{{{__ "Welcome! Please create an account for YourBrand TV."}}}</p>
+
+    {{> components/flash/flash}}
+
+    <fieldset>
+      <legend>{{{__ "Create an Account"}}}</legend>
+
+      <div class="form-row">
+        <label for="register-email">{{{__ "E-mail Address"}}}</label>
+        <input type="email" name="email" id="register-email" value="{{ email }}" autofocus>
+      </div>
+
+      <div class="form-row">
+        <label for="register-password">{{{__ "Password"}}}</label>
+        <input type="password" name="password" id="register-password" value="{{ password }}" required>
+      </div>
+
+      <div class="form-row">
+        <label for="register-confirm">{{{__ "Confirm"}}}</label>
+        <input type="password" name="confirm" id="register-confirm" value="{{ confirm }}" required>
+      </div>
+    </fieldset>
+
+    <footer>
+      <button type="submit" class="button-light button-large">{{{__ "Register"}}}</button>
+
+      <nav>
+        <p><a href="{{linkTo "/user/login"}}">{{{__ "Already have an Account?"}}}</a></p>
+      </nav>
+    </footer>
+  </form>
+</main>

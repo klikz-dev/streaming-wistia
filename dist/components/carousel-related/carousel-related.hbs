@@ -1,0 +1,29 @@
+<div class="carousel-related">
+  <div class="carousel-related-trigger-container">
+    <a class="carousel-related-trigger button-dark" href="#">{{{__ "Related Videos"}}}</a>
+  </div>
+
+  <div class="carousel-related-container">
+    <div class="bcc-carousel-container">
+      <div class="bcc-carousel-pagination-nOfn"></div>
+      <div class="bcc-carousel-pagination"></div>
+
+      <div class="bcc-carousel-arrows">
+        <a class="bcc-carousel-prev"></a>
+        <a class="bcc-carousel-next"></a>
+      </div>
+
+      <div class="bcc-carousel-hook">
+        <ul>
+          {{#each videos}}
+          <li>
+            <div class="bcc-carousel-body">
+              {{> components/video-thumb/video-thumb}}
+            </div>
+          </li>
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

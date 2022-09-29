@@ -1,0 +1,33 @@
+<div class="carousel-standard">
+  <div class="bcc-carousel-container">
+
+    <header class="bcc-carousel-header">
+      <div class="bcc-carousel-pagination-nOfn"></div>
+      <div class="bcc-carousel-pagination"></div>
+      <h2 class="heading">
+        {{#if url}}
+          <a href="{{linkTo url}}">{{ title }}</a>
+        {{else}}
+          {{ title }}
+        {{/if}}
+      </h2>
+    </header>
+  
+    <div class="bcc-carousel-arrows">
+      <a class="bcc-carousel-prev"></a>
+      <a class="bcc-carousel-next"></a>
+    </div>
+
+    <div class="bcc-carousel-hook">
+      <ul>
+        {{#each videos}}
+          <li>
+            <div class="bcc-carousel-body">
+              {{> components/video-thumb/video-thumb projectId=../id}}
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>

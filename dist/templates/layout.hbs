@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="{{ locale }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <title>{{ pageTitle }}</title>
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
+    <link rel="SHORTCUT ICON" href="//www.ascd.org/Portals/0/favicon.ico">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/{{{block "pageName"}}}.css">
+    <link rel="canonical" href="{{ canonicalUrl }}">
+    {{{block "styles"}}}
+    <meta name="title" content="{{ metatags.title }}">
+    <meta name="description" content="{{ metatags.description }}">
+    {{{block "meta"}}}
+    <script>
+      window.bootstrap = {{{ bootstrap }}};
+
+      {{! Add feature detection classes ASAP to avoid FOUC on elements that rely on the classes. }}
+      (function(head) {
+        if(typeof document.createElement('div').style.webkitLineClamp !== 'undefined') {
+          head.className += ' has-webkit-line-clamp';
+        }
+        {{!
+          Add a class to the <html> element if not on a touch device
+          so we can create :hover pseudo classes that do not activate
+          on mobile.
+        }}
+        head.className += (('ontouchstart' in head) ? ' has-touch' : ' no-touch');
+      })(document.documentElement);
+    </script>
+
+	<link href="/styles/ascd.css" rel="stylesheet" />
+
+  <meta name="google-site-verification" content="GCoSU_0--IWEtYS5vtkS4k2r6-R8TrjMNuDfOfnpnUA" />
+  </head>
+
+  <body class="{{{block "bodyClass"}}}">
+    {{> components/nav-hamburger/nav-hamburger}}
+
+    <div class="wrapper">
+      {{> components/header/header}}
+      {{{ body }}}
+      {{> components/footer/footer}}
+      {{{block "scripts"}}}
+    </div>
+
+    <script src="/scripts/common.js"></script>
+    <script src="/scripts/page-{{{block "pageName"}}}.js"></script>
+
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+       e.src='//www.google-analytics.com/analytics.js';
+       r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      {{#config.googleAnalyticsAccounts}}
+      {{^name}}
+      ga('create','{{ id }}','auto');
+      ga('send','pageview');
+      {{/name}}
+      {{#name}}
+      ga('create','{{ id }}','auto', { 'name': '{{ name }}' });
+      ga('{{ name }}.send','pageview');
+      {{/name}}
+      {{/config.googleAnalyticsAccounts}}
+    </script>
+
+    <!-- built on: Wed May 11 2022 20:23:26 -->
+  </body>
+</html>

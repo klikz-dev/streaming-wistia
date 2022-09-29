@@ -1,0 +1,61 @@
+<div class="hero-player">
+  <div class="hero-player-content" itemprop="video" itemscope itemtype="http://schema.org/VideoObject">
+    {{> components/video-player/video-player}}
+
+    <div class="hero-player-metabox">
+      <h1 class="hero-player-title" itemprop="name">
+        {{ name }}
+      </h1>
+      <meta itemprop="duration" content="{{ duration }}" />
+      <meta itemprop="thumbnailUrl" content="{{ thumbnail.url }}" />
+      <meta itemprop="datePublished" content="{{ updated }}" />
+      <meta itemprop="description" content="{{{ description }}}" />
+
+      <p class="hero-player-metadata">
+        <span class="hero-player-duration">{{ formatDuration duration }}</span>
+        <span class="hero-player-date">{{ dateFormat created }}</span>
+      </p>
+
+      <div class="hero-player-desc" style="color: white;"></div>
+      
+  {{#if isfree}}
+  {{else if loggedInPreview}}
+    <div>
+        <h1 class="buying-options-title">{{{__ "Buying Options"}}}</h1>
+        <div class="hero-player-desc">2-day rental - $14.95 USD one-time</div>
+        <div class="hero-player-desc">4-month rental - $24.95 USD one-time</div>
+        <div class="hero-player-desc">12-month rental - $39.95 USD one-time</div>
+        <div class="hero-player-desc">1-Year Site subscription - $995.00 USD one-time</div>
+        <br />
+        <div class="hero-player-desc">Please Log in to Purchase a video</div>
+    </div>
+  {{else}}      
+      {{^isAuthorized}}
+        <h1 class="buying-options-title">{{{__ "Buying Options"}}}</h1>
+
+        {{#plans}}
+          <p class="buying-option">
+            <a class="buying-option-link" href="/subscribe/{{ id }}">
+              {{ description }} &dash; {{ currencyReadable }}
+            </a>
+          </p>
+        {{/plans}}
+        {{^plans}}
+        <p class="hero-player-desc">{{{__ "No plans exist for this video."}}}</p>
+        {{/plans}}
+      {{/isAuthorized}}
+  {{/if}}
+
+      {{#config.showRating}}
+      {{> components/hero-rating/rating}}
+      {{/config.showRating}}
+	  
+    </div>
+     <div class="player-footer">
+      <a class="buy-full-site button-dark" href="http://www.ascd.org/professional-development/videos/ascd-streaming-video.aspx#pricing">Buy Full Site</a>
+     </div>
+  </div>
+  {{#carousels.related}}
+    {{> components/carousel-related/carousel-related}}
+  {{/carousels.related}}
+</div>

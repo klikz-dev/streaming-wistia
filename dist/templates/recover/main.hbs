@@ -1,0 +1,24 @@
+{{#contentFor "pageName"}}recoverpassword{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <form class="form" action="{{linkTo "/user/recover"}}" method="post">
+    <h1 class="form-title">{{{__ "Forgot your Password?"}}}</h1>
+    <p class="form-intro">{{{__ "Enter the email address for your existing account below."}}}</p>
+
+    <fieldset>
+      <legend>{{{__ "Change Password Request"}}}</legend>
+
+      <div class="form-row">
+        <label for="forgot-password-email">{{{__ "E-mail Address"}}}</label>
+        <input type="email" name="email" id="forgot-password-email" autofocus required>
+      </div>
+    </fieldset>
+
+    <footer>
+      <button type="submit" class="button-light">{{{__ "Submit"}}}</button>
+      <a href="{{linkTo "/"}}" class="button-light">{{{__ "Cancel"}}}</a>
+    </footer>
+  </form>
+</main>

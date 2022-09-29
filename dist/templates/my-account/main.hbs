@@ -1,0 +1,139 @@
+{{#contentFor "pageName"}}my-account{{/contentFor}}
+
+{{#contentFor "scripts"}}
+  <script src="https://js.stripe.com/v2/"></script>
+  <script>Stripe.setPublishableKey('{{ config.stripe.publishableKey }}');</script>
+{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <form class="form my-account-form{{#if isEditingProfile}} is-editing{{/if}}" action="{{linkTo "/user/account"}}" method="post">
+    <header>
+      <nav>
+        <button type="button" class="button-light form-editable-toggle">{{{__ "Edit"}}}</button>
+      </nav>
+
+      <h1 class="form-title">{{{__ "My Account"}}}</h1>
+    </header>
+
+    <div class="form-editable-active">
+      <fieldset>
+        <legend>{{{__ "Profile"}}}</legend>
+
+        <p class="feedback feedback-error form-err-target is-hidden">
+          <!-- placeholder for validation error messages -->
+        </p>
+
+        <div class="form-row">
+          <label for="my-account-email">{{{__ "E-mail Address"}}}</label>
+          <input type="email" name="email" value="{{ email }}">
+        </div>
+
+        <div class="form-row">
+          <label for="my-account-password">{{{__ "Password"}}}</label>
+          <input type="password" name="password" value="">
+        </div>
+
+        <div class="form-row">
+          <label for="my-account-confirm">{{{__ "Confirm Password"}}}</label>
+          <input type="password" name="confirm" value="">
+        </div>
+      </fieldset>
+
+      <footer>
+        <button type="submit" class="button-light button-large">{{{__ "Submit"}}}</button>
+        <button type="button" class="button-light button-large button-secondary form-editable-toggle">{{{__ "Cancel"}}}</button>
+      </footer>
+    </div>
+
+    <div class="form-editable-default">
+      <fieldset>
+        <legend>{{{__ "Profile"}}}</legend>
+
+        <div class="form-row">
+          <label>{{{__ "E-mail Address"}}}</label>
+          <p>{{ user.email }}</p>
+        </div>
+      </fieldset>
+    </div>
+  </form>
+
+  {{#eq user.role "user"}}
+    <form class="form payment-form{{#if isEditingPayment}} is-editing{{/if}}" action="{{linkTo "/user/account"}}" method="post" autocomplete="on">
+      <header>
+        <nav>
+          <button type="button" class="button-light form-editable-toggle">{{{__ "Edit"}}}</button>
+        </nav>
+
+        <h1 class="form-title">{{{__ "Payment"}}}</h1>
+      </header>
+
+      <div class="form-editable-active">
+        <fieldset>
+          <legend>{{{__ "Credit Card"}}}</legend>
+
+          <p class="feedback feedback-error form-err-target is-hidden">
+            <!-- placeholder for Stripe JS validation error messages -->
+          </p>
+
+          <div class="form-row">
+            {{> components/card-list/card-list}}
+          </div>
+
+          <div class="form-row">
+            <label for="payment-ccnumber">{{{__ "Card Number"}}}</label>
+            <input type="text" id="payment-ccnumber" data-stripe="number" required autocomplete="off">
+          </div>
+
+          <div class="form-row">
+            <div class="form-cell">
+              <label>{{{__ "Expiration (mm/yyyy)"}}}</label>
+              <input type="number" class="small" data-stripe="exp-month" required maxlength="2" autocomplete="cc-exp-month"> /
+              <input type="number" class="small" data-stripe="exp-year" required maxlength="4" autocomplete="cc-exp-year">
+            </div>
+            <div class="form-cell">
+              <label>{{{__ "CVV Number"}}}</label>
+              <input type="number" class="small" data-stripe="cvc" required autocomplete="off" maxlength="4">
+              <span class="card-cvv"></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <footer>
+          <button type="submit" class="button-light button-large">{{{__ "Submit"}}}</button>
+          <button type="button" class="button-light button-large form-editable-toggle">{{{__ "Cancel"}}}</button>
+        </footer>
+      </div>
+
+      <div class="form-editable-default">
+        <fieldset>
+          <legend>{{{__ "Credit Card"}}}</legend>
+
+          {{#if cust.defaultCard}}
+            <div class="form-row">
+              <label>{{{__ "Card Number"}}}</label>
+              <p>{{ cust.defaultCard.cardMask }}</p>
+            </div>
+
+            <div class="form-row">
+              <div class="form-cell">
+                <label>{{{__ "Expiration"}}}</label>
+                {{ cust.defaultCard.exp_month }}/{{ cust.defaultCard.exp_year }}
+              </div>
+
+              <div class="form-cell">
+                <label>{{{__ "CVV Number"}}}</label>
+                {{ cust.defaultCard.cvvMask }}
+              </div>
+            </div>
+          {{else}}
+            <div class="form-row">
+              {{{__ "No card on file"}}}
+            </div>
+          {{/if}}
+        </fieldset>
+      </div>
+    </form>
+  {{/eq}}
+</main>

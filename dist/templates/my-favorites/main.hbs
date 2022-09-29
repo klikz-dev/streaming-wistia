@@ -1,0 +1,11 @@
+{{#contentFor "pageName"}}my-favorites{{/contentFor}}
+{{#contentFor "bodyClass"}}my-favorites{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <div class="form">
+      <h1 class="form-title">{{{__ "My Favorite Videos"}}}</h1>
+      {{> components/favorite-list/favorite-list page="my-favorites"}}
+  </div>
+</main>

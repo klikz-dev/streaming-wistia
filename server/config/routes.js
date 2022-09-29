@@ -144,8 +144,8 @@ router.get('/config', attachTaxonomy, controllers.config.getConfig);
 //Detail pages and taxonomy (3-levels max)
 router.get(
   [
-    '/:projectId',
-    '/:projectId/:videoId',
+    '/:tagId',
+    '/:tagId/:videoId',
     '/' +
       config.videoPrefix +
       '/:grandparent/:parent/:child/:videoId/:videoName',

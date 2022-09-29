@@ -1,0 +1,11 @@
+{{#contentFor "pageName"}}my-packages{{/contentFor}}
+{{#contentFor "bodyClass"}}my-packages{{/contentFor}}
+
+<main class="centered">
+  {{> components/flash/flash}}
+
+  <div class="form">
+      <h1 class="form-title">{{{__ "My Videos"}}}</h1>
+      {{> components/package-list/package-list page="my-packages"}}
+  </div>
+</main>

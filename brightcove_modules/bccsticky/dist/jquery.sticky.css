@@ -1,0 +1,15 @@
+.bcc-sticky-container {
+  -webkit-transform: translateZ(0);
+}
+
+.bcc-sticky-is-stuck {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+}
+
+.bcc-sticky-clone-hidden {
+  display: none;
+}

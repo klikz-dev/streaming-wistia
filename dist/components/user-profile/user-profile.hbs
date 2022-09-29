@@ -1,0 +1,37 @@
+  {{#if user.isLoggedIn}}
+<div class="user-profile">
+  <a class="user-profile-toggle">
+    <i class="fa fa-user"></i>
+  </a>
+</div>
+    {{else}}
+<div class="user-profile">
+  <a class="user-profile-toggle" style="font-size:1em; color: #fff;background-color: #739600;">
+    LOG IN
+  </a>
+</div>
+    {{/if}}
+
+<menu class="user-profile-menu is-hidden">
+  {{#if user.isLoggedIn}}
+    <p>{{{__ "Welcome, %s %s!" user.first_name user.last_name}}}</p>
+  {{/if}}
+
+  <ul>
+    {{#if user.isLoggedIn}}
+      <li><a href="{{linkTo "/my-packages"}}">{{{__ "MY VIDEOS"}}}</a></li>
+      <li><a href="{{linkTo "/my-favorites"}}">{{{__ "MY FAVORITES"}}}</a></li>
+      <li><a href="{{linkTo "/user/logout"}}">{{{__ "LOGOUT"}}}</a></li>
+    {{else}}
+      <li><a href="{{linkTo "/user/login"}}">{{{__ "Log In"}}}</a></li>
+    {{/if}}
+  </ul>
+
+  <!-- <hr />
+
+  <p>{{{__ "Change Locale:"}}}</p>
+  <select>
+    <option value="en"{{#eq locale "en"}} selected{{/eq}}>{{{__ "English"}}}</option>
+    <option value="de"{{#eq locale "de"}} selected{{/eq}}>{{{__ "German"}}}</option>
+  </select> -->
+</menu>

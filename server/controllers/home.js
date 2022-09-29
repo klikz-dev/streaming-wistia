@@ -185,15 +185,27 @@ module.exports.homePage = async function (req, res, next) {
     featuredMedias.push(media);
   }
 
-  const carouselItems = [];
-  for (let i = 0; i < config.projects.length; i++) {
-    const project = config.projects[i];
+  const webstreamsData = await cmsApi.getProject(6568576);
 
-    const projectData = await cmsApi.getProject(project.projectId);
+  const carouselItems = [];
+  for (let i = 0; i < config.featuredTags.length; i++) {
+    const featuredTag = config.featuredTags[i];
+    const tagData = config.tags[featuredTag];
+
+    const videos = [];
+    for (let j = 0; j < tagData.medias.length; j++) {
+      const mediaId = tagData.medias[j];
+      const wistiaMediaData = webstreamsData.videos.filter(
+        (media) => media.id == mediaId
+      )[0];
+
+      videos.push(wistiaMediaData);
+    }
 
     carouselItems.push({
-      title: project.title,
-      ...projectData,
+      id: featuredTag,
+      title: tagData.name,
+      videos: videos,
     });
   }
 

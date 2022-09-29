@@ -1,0 +1,13 @@
+{{#contentFor "pageName"}}unsubscribe{{/contentFor}}
+
+<main class="centered">
+  <form action="{{ formActionUrl }}" method="post" class="form unsubscribe-form">
+    <h1 class="form-title">{{{__ "Unsubscribe from %s?" subscription.plan.name}}}</h1>
+    <p>{{{__ "Cancellation of your subscription to <strong>%s</strong> will be effective at the end of your current billing period on <strong>%s</strong>. If you wish to resubscribe, please do so after this date." subscription.plan.name subscription.periodEndFormatted}}}</p>
+
+    <footer>
+      <button type="submit" class="button-light">{{{__ "Remove Package"}}}</button>
+      <a class="button-light button-secondary" href="{{linkTo goBackUrl}}">{{{__ "Go Back"}}}</a>
+    </footer>
+  </form>
+</main>

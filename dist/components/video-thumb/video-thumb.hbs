@@ -1,0 +1,10 @@
+<div class="video-thumb{{#isActiveVideo}} is-active{{/isActiveVideo}}">
+  <a href="/{{ projectId }}/{{ this.id }}" class="video-thumb-thumbnail">
+    <img class="video-thumb-thumbnail-img" src="{{ this.thumbnail.url }}" alt="{{ this.name }}">
+  </a>
+  
+  <a href="/{{ projectId }}/{{ this.id }}" class="video-thumb-title">{{ this.name }}</a>
+  <p class="video-thumb-meta">
+    <span class="video-thumb-duration">{{ formatDuration this.duration }}</span>
+  </p>
+</div>

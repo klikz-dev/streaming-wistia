@@ -12,7 +12,17 @@ var settings = require('../config');
 
 module.exports = function attachTaxonomy(req, res, next) {
   var config = settings.getLocaleSettings(req.locale);
-  const categories = config.categories;
+  // const categories = config.categories;
+  const categories = [];
+  for (let i = 0; i < Object.keys(config.tags).length; i++) {
+    const slug = Object.keys(config.tags)[i];
+    const title = config.tags[slug].name;
+
+    categories.push({
+      title: title,
+      slug: slug,
+    });
+  }
   // return {
   //   taxonomy: {
   //     categories: categories,

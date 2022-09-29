@@ -1,0 +1,21 @@
+{{#if messages.error}}
+  {{#isArray messages.error}}
+    {{#each messages.error}}
+      <div class="feedback feedback-error">
+        {{#if msg}}
+          {{ msg }}
+        {{else}} {{#if message}}
+          {{ message }}
+        {{/if}}
+          {{ . }}
+        {{/if}}
+      </div>
+    {{/each}}
+  {{else}}
+    <div class="feedback feedback-error">{{ . }}</div>
+  {{/isArray}}
+{{/if}}
+
+{{#if messages.success}}
+  <div class="feedback feedback-success">{{ messages.success }}</div>
+{{/if}}

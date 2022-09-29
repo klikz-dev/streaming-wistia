@@ -1,0 +1,14 @@
+<div class="search-form">
+  <a href="#" class="search-form-button">
+    <i class="fa fa-search"></i>
+  </a>
+
+  <form class="search-form-form" action="/{{linkTo "search"}}" method="get">
+    <input class="search-form-field" type="search" name="keyword" value="" placeholder="{{{__ "Search Videos"}}}" required autocomplete="off">
+    <button class="search-form-submit" type="submit">
+      <i class="fa fa-search"></i>
+    </button>
+  </form>
+
+  <div class="autocomplete"></div>
+</div>

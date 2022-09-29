@@ -1,0 +1,35 @@
+<div class="carousel-hero">
+  <div class="bcc-carousel-hook">
+    <div class="bcc-carousel-arrows">
+      <a class="bcc-carousel-prev"></a>
+      <a class="bcc-carousel-next"></a>
+    </div>
+
+    <ul style="width: {{multiply 100 videos.length}}%;">
+      {{#videos}}
+        <li style="width: {{divide 100 ../videos.length}}%">
+          <div class="bcc-carousel-body">
+            <div class="bcc-carousel-thumb">
+              <img data-src="{{ assets.6.url }}" alt="{{ name }}" src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==">
+            </div>
+            
+            <div class="carousel-hero-meta marketingoverlay">            
+              <a class="carousel-hero-title" href="/{{this.project.id}}/{{this.id}}">{{name}}</a>
+              <div class="clear"></div>
+              <a class="carousel-hero-description" href="/{{this.project.id}}/{{this.id}}" title="{{name}}"></a>
+              <div class="clear"></div>
+              <div class="carousel-hero-cta">
+                <a href="/{{this.project.id}}/{{this.id}}">
+                  <i class="fa fa-play-circle-o"></i> {{{__ "Watch Now"}}}
+                </a>
+              </div>
+            </div>
+          </div>
+        </li>
+      {{/videos}}
+    </ul>
+    <div class="bcc-carousel-gradient-plus"></div>
+  </div>
+
+  <div class="bcc-carousel-pagination"></div>
+</div>

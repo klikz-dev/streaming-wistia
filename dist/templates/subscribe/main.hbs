@@ -1,0 +1,94 @@
+{{#contentFor "pageName"}}subscribe{{/contentFor}}
+
+{{#contentFor "scripts"}}
+  <script src="https://js.stripe.com/v2/"></script>
+  <script>Stripe.setPublishableKey('{{ config.stripe.publishableKey }}');</script>
+{{/contentFor}}
+
+<main class="centered">
+  <form action="{{ formActionUrl }}" method="post" class="form form-centered payment-form{{#unless hasCardOnFile}} is-editing{{/unless}}" novalidate>
+    {{> components/flash/flash}}
+
+    <h1 class="form-title">{{ plan.name }}</h1>
+    <h2 class="form-subtitle">{{ plan.currencyReadable }}</h2>
+    {{#if isMember}}<div>10% off member discount</div>
+    {{/if}}
+    <p>{{ enterPaymentInformation }} {{ plan.name }}.</p>
+
+    <fieldset>
+      <legend>{{{__ "Credit Card"}}}</legend>
+
+      <p class="feedback feedback-error form-err-target is-hidden">
+        <!-- placeholder for Stripe JS validation error messages -->
+      </p>
+
+      {{#if hasCardOnFile}}
+        <div class="form-row payment-existing-card">
+          <label>
+            <input class="form-editable-toggle" type="checkbox" name="useCardOnFile"{{#if hasCardOnFile}} checked{{/if}}>
+            {{{__ "Use the credit card associated with my account"}}}
+          </label>
+          <p class="warning">{{{__ "The credit card on file will be replaced with this new card."}}}</p>
+        </div>
+
+        <div class="form-editable-default">
+          <div class="form-row {{ defaultCard.brand }}">
+            {{> components/card-list/card-list}}
+          </div>
+
+          <div class="form-row">
+            <label>{{{__ "Credit Card Number"}}}</label>
+            <p>{{ defaultCard.cardMask }}</p>
+          </div>
+
+          <div class="form-row">
+            <div class="form-cell">
+              <label>{{{__ "Expiration"}}}</label>
+              {{ defaultCard.exp_month }}/{{ defaultCard.exp_year }}
+            </div>
+
+            <div class="form-cell">
+              <label>{{{__ "CVV"}}}</label>
+              {{ defaultCard.cvvMask }}
+            </div>
+          </div>
+        </div>
+      {{/if}}
+
+      {{#if hasCardOnFile}}
+        <div class="form-editable-active">
+      {{/if}}
+
+        <div class="form-row">
+          {{> components/card-list/card-list}}
+        </div>
+
+        <div class="form-row">
+          <label>{{{__ "Credit Card Number"}}}</label>
+          <input type="text" data-stripe="number" value="{{ cardNumber }}" required autocomplete="off">
+          <input type="text" name="successUrl" value="{{ successUrl }}" hidden="true"></input>
+        </div>
+
+        <div class="form-row">
+          <div class="form-cell">
+            <label>{{{__ "Expiration"}}}</label>
+            <input type="number" class="small" data-stripe="exp-month" value="{{ expMonth }}" required maxlength="2" autocomplete="cc-exp-month"> /
+            <input type="number" class="small" data-stripe="exp-year" value="{{ expYear }}" required maxlength="4" autocomplete="cc-exp-year">
+          </div>
+          <div class="form-cell">
+            <label>{{{__ "CVV (3 on back, Amex: 4 on front)"}}}</label>
+            <input type="number" class="small" data-stripe="cvc" value="{{ cvvNumber }}" maxlength="4" required autocomplete="off">
+            <span class="card-cvv"></span>
+          </div>
+        </div>
+      {{#if hasCardOnFile}}
+        </div>
+      {{/if}}
+    </fieldset>
+
+    <footer>
+      <button type="submit" class="button-light button-large">{{{__ "Submit"}}}</button>
+      <a href="{{linkTo cancelUrl}}" class="button-light button-large button-secondary">{{{__ "Cancel"}}}</a>
+    </footer>
+  </form>
+</main>
