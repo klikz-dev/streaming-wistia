@@ -1,0 +1,19 @@
+{
+	"name": "Dropdown menu",
+	"homepage": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Dropdown",
+	"authors": [
+		"jaredwilli <jwilliams@brightcove.com>"
+	],
+	"description": "A mobile dropdown menu",
+	"main": "dist/dropdown.js",
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components"
+	],
+	"dependencies": {
+		"jquery": "~2.1.4"
+	}
+}

@@ -1,0 +1,47 @@
+{
+  "name": "BCCCarousel",
+  "description": "A wrapper around jCarousel",
+  "version": "0.4.3",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BrightcoveConsultingReusableComponents/Front-End-Carousel.git"
+  },
+  "scripts": {
+    "start": "grunt && grunt watch",
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.5",
+    "grunt-contrib-jshint": "~0.10.0",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-uglify": "~0.6.0",
+    "grunt-contrib-sass": "~0.8.1",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-contrib-concat": "~0.5.0",
+    "grunt-contrib-copy": "~0.6.0",
+    "grunt-mocha": "~0.4.11",
+    "mocha": "~1.21.5",
+    "chai": "~1.9.2",
+    "underscore": "~1.6.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "main": "dist/bcc-carousel.js",
+  "dependencies": {
+    "jcarousel": "0.3.4",
+    "jquery": "2.1.4"
+  },
+  "readme": "Front-End-Carousel\n==================\n\nThis is a wrapper around jCarousel 0.3. It extends jCarousel with the following\nfeatures:\n\n* Responsive support with configurable breakpoints\n* `overflow: scroll` support\n* Lazy-loading images as they come into view\n* Touch scrolling (both finger-tracking and swipe support)\n* Auto disabling of next/previous controls\n* Fixes existing jCarousel edge case bugs\n* And more - like easy event binding, `created` deferred, et. al.\n",
+  "readmeFilename": "README.md",
+  "gitHead": "198d63795d77ec2128dcb9e90f3d946cbe529346",
+  "bugs": {
+    "url": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Carousel/issues"
+  },
+  "homepage": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Carousel#readme",
+  "_id": "BCCCarousel@0.4.3",
+  "_shasum": "3d54860503c808f1e9cbecced06bf77051e8f25b",
+  "_from": "brightcoveconsultingreusablecomponents/Front-End-Carousel#0.4.5",
+  "_resolved": "git+https://github.com/brightcoveconsultingreusablecomponents/Front-End-Carousel.git#198d63795d77ec2128dcb9e90f3d946cbe529346"
+}

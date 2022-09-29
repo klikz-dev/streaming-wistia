@@ -1,0 +1,137 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>Carousel</title>
+    <link rel="stylesheet" href="../dist/bcc-carousel.css">
+
+    <!-- All carousel styles -->
+    <style>
+      .bcc-carousel {
+        border: 1px solid #ccc;
+        padding-top: 10px;
+        width: 575px;
+      }
+
+      .bcc-carousel-hook {
+        width: 480px; /* num per page * width of each <li> */
+      }
+      .bcc-carousel-hook li {
+        width: 120px;
+      }
+      .bcc-carousel-thumb {
+        height: 90px;
+      }
+    </style>
+
+    <!--  Responsive carousel styles -->
+    <style>
+      .responsive {
+        min-width: 600px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+      .responsive .bcc-carousel {
+        width: 100%;
+      }
+      .responsive .bcc-carousel-hook {
+        width: 80%;
+      }
+      .responsive .bcc-carousel-thumb {
+        height: 0;
+        padding-bottom: 70%;
+      }
+    </style>
+
+    <!-- Template -->
+    <script id="template" type="text/html">
+      <div class="bcc-carousel">
+        <div class="bcc-carousel-arrows">
+          <a class="bcc-carousel-prev">&lang;</a>
+          <a class="bcc-carousel-next">&rang;</a>
+        </div>
+
+        <div class="bcc-carousel-hook">
+          <ul>
+            <% _.each(items, function(item, i) { %>
+              <li>
+                <div class="bcc-carousel-body">
+                  <p class="bcc-carousel-thumb">
+                    <% if(lazyLoadImages) { %>
+                      <img data-src="<%= item.thumb %>?cachebust=<%= i %>" alt="">
+                    <% } else { %>
+                      <img src="<%= item.thumb %>?cachebust=<%= i %>" alt="">
+                    <% } %>
+                  </p>
+                  <p class="title" href="#"><%= item.title %></p>
+                </div>
+              </li>
+            <% }); %>
+          </ul>
+        </div>
+
+        <div class="bcc-carousel-pagination"></div>
+      </div>
+    </script>
+  </head>
+  <body>
+    <main role="main">
+      <h1>Basic carousel</h1>
+      <div id="basic"></div>
+
+      <h1>Responsive carousel (fluid)</h1>
+      <p>Min and max width on the carousel</p>
+      <div id="responsive-fluid" class="responsive"></div>
+
+      <h1>Responsive carousel (breakpoints)</h1>
+      <p>Number of visible items change depending on the browser size. At 400px the carousel will turn into a simple overflow: hidden div.</p>
+      <div id="responsive-breakpoints" class="responsive"></div>
+
+      <h1>Fractions</h1>
+      <p>This carousel displays 3.5 items at a time.</p>
+      <div id="fractions"></div>
+
+      <h1>Responsive Fractions</h1>
+      <p>This carousel displays 3.5 items at a time.</p>
+      <div id="responsive-fractions" class="responsive"></div>
+
+      <h1>Lazy load images</h1>
+      <p>Carousel images are loaded once they're scrolled into view</p>
+      <div id="lazyload"></div>
+
+      <h1>Start index</h1>
+      <p>Specify the starting list item. In this example it's the 5th list item, page 2.</p>
+      <div id="startIndex"></div>
+
+      <h1>Move by</h1>
+      <p>Move by one list item at a time, rather than by page</p>
+      <div id="moveBy"></div>
+
+      <h1>Autoscroll</h1>
+      <p>Automatically advance the carousel every second</p>
+      <div id="autoScroll"></div>
+
+      <h1>Touch Scrolling</h1>
+      <p>Scroll through carousel items using touch events</p>
+      <div id="touchScroll"></div>
+    </main>
+    </main>
+
+    <script src="../bower_components/underscore/underscore.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../bower_components/jcarousel/dist/jquery.jcarousel.js"></script>
+    <script src="../src/scripts/core.js"></script>
+    <script src="../src/scripts/pagination.js"></script>
+    <script src="../src/scripts/controls.js"></script>
+    <script src="../src/scripts/lazyloader.js"></script>
+    <script src="../src/scripts/autoscroll.js"></script>
+    <script src="../src/scripts/responsive.js"></script>
+    <script src="../src/scripts/touchscrolling.js"></script>
+    <script src="example.js"></script>
+  </body>
+</html>

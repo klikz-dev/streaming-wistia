@@ -1,0 +1,20 @@
+{
+  "name": "StickyHeaders",
+  "version": "0.2.4",
+  "homepage": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Sticky-Headers",
+  "authors": [
+    "ehynds <ehynds@brightcove.com>"
+  ],
+  "description": "Create position: fixed elements on scroll",
+  "main": "dist/jquery.sticky.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}

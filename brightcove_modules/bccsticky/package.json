@@ -1,0 +1,31 @@
+{
+  "name": "bccsticky",
+  "description": "A jQuery plugin to create fixed elements",
+  "version": "0.2.4",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BrightcoveConsultingReusableComponents/Front-End-Sticky-Headers.git"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.3",
+    "grunt-contrib": "~0.10.0"
+  },
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "main": "dist/jquery.sticky.js",
+  "dependencies": {
+    "jquery": "~2.1.4"
+  },
+  "gitHead": "9784f298741215504d5decbeb3cb4b6e34aaa31e",
+  "bugs": {
+    "url": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Sticky-Headers/issues"
+  },
+  "readme": "ERROR: No README data found!",
+  "homepage": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Sticky-Headers#readme",
+  "_id": "bccsticky@0.2.4",
+  "_shasum": "a3b8815966a1c9e44f7803eb8f48b4c2b73637fd",
+  "_from": "brightcoveconsultingreusablecomponents/Front-End-Sticky-Headers#0.2.5",
+  "_resolved": "git+https://github.com/brightcoveconsultingreusablecomponents/Front-End-Sticky-Headers.git#9784f298741215504d5decbeb3cb4b6e34aaa31e"
+}

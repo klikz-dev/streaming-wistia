@@ -1,0 +1,157 @@
+{
+  "name": "YBTV",
+  "description": "YBTV Front-end Build Tool",
+  "private": true,
+  "version": "0.0.2",
+  "homepage": "https://github.com/BrightcovePS/YBTV2-Frontend.git",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BrightcovePS/YBTV2-Frontend.git"
+  },
+  "browser": {
+    "jquery": "./node_modules/jquery/dist/jquery.js",
+    "tipsy": "./node_modules/@atlassian/tipsy/src/javascripts/jquery.tipsy.js",
+    "bccsticky": "./node_modules/bccsticky/dist/jquery.sticky.js",
+    "jquery.payment": "./node_modules/jquery.payment/lib/jquery.payment.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "bccsticky": {
+      "depends": [
+        "jquery:$"
+      ]
+    },
+    "tipsy": {
+      "depends": [
+        "jquery:$"
+      ]
+    },
+    "jquery.payment": {
+      "depends": [
+        "jquery:$"
+      ]
+    }
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim"
+    ]
+  },
+  "dependencies": {
+    "@atlassian/tipsy": "github:atlassian/tipsy",
+    "BCCCarousel": "file:brightcove_modules/BCCCarousel",
+    "aws-sdk": "^2.1051.0",
+    "backbone": "1.2.1",
+    "bccdropdown": "file:brightcove_modules/bccdropdown",
+    "bccsticky": "file:brightcove_modules/bccsticky",
+    "body-parser": "^1.19.1",
+    "bourbon": "4.2.6",
+    "bourbon-neat": "1.7.2",
+    "cache-manager": "1.2.2",
+    "compression": "^1.7.4",
+    "crypto-lite": "0.1.0",
+    "dropzone": "4.2.0",
+    "express": "^4.17.2",
+    "express-flash": "0.0.2",
+    "express-handlebars": "2.0.1",
+    "express-session": "^1.17.2",
+    "express-validator": "2.15.1",
+    "express-winston": "0.3.1",
+    "generaterr": "1.1.2",
+    "grunt": "^1.0.4",
+    "grunt-cli": "^1.4.3",
+    "grunt-browserify": "~4.0.0",
+    "grunt-cleanempty": "~1.0.3",
+    "grunt-contrib-clean": "~1.0.0",
+    "grunt-contrib-copy": "~0.8.0",
+    "grunt-contrib-imagemin": "^2.0.1",
+    "grunt-contrib-jshint": "~0.11.2",
+    "grunt-contrib-uglify": "~0.10.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-express-server": "~0.5.1",
+    "grunt-githooks": "~0.3.1",
+    "grunt-open": "~0.2.3",
+    "grunt-replace": "~0.9.3",
+    "grunt-sass": "^2.0.0",
+    "grunt-wait": "^0.1.0",
+    "i18n": "0.5.0",
+    "is-buffer": "^2.0.5",
+    "jcarousel": "0.3.4",
+    "jquery": "2.1.4",
+    "jquery.payment": "1.3.0",
+    "lodash": "3.10.1",
+    "matchdep": "~0.3.0",
+    "matchMedia": "paulirish/matchMedia.js#master",
+    "mcrypt": "^0.1.17",
+    "moment": "^2.29.1",
+    "mustbe": "0.3.1",
+    "mysql": "2.17.1",
+    "node-cache": "3.0.0",
+    "node-cms": "file:./brightcove_modules/node-cms",
+    "node-logger": "file:./brightcove_modules/node-logger",
+    "node-serialize": "0.0.4",
+    "node-stripe": "file:./brightcove_modules/node-stripe",
+    "node-ums": "file:./brightcove_modules/node-ums",
+    "normalize.css": "3.0.3",
+    "passport": "0.3.0",
+    "passport-facebook": "2.0.0",
+    "passport-local": "1.0.0",
+    "pg": "4.4.1",
+    "query-string": "^6.8.3",
+    "request": "2.60.0",
+    "session-file-store": "^0.2.0",
+    "stringify": "3.1.0",
+    "tipsy": "atlassian/tipsy",
+    "touch": "1.0.0",
+    "underscore": "^1.13.2",
+    "xss": "0.2.10"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "browserify": "~12.0.1",
+    "browserify-shim": "~3.8.11",
+    "chai": "~3.2.0",
+    "chai-as-promised": "~5.1.0",
+    "connect-livereload": "~0.5.3",
+    "copy-webpack-plugin": "^5.0.4",
+    "css-loader": "^3.2.0",
+    "extract-loader": "^3.1.0",
+    "factor-bundle": "~2.5.0",
+    "fibers": "^4.0.3",
+    "file-loader": "^4.2.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "~2.2.5",
+    "node-sass": "^7.0.1",
+    "postcss-import": "^12.0.1",
+    "postcss-loader": "^3.0.0",
+    "postcss-preset-env": "^6.7.0",
+    "remapify": "~2.0.3",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.3.0",
+    "sass-loader": "^8.0.0",
+    "shipit-deploy": "2.0.0",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.1",
+    "webpack-merge": "^4.2.2"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "scripts": {
+    "start": "grunt server",
+    "clean": "npm prune && npm install",
+    "postinstall": "grunt postinstall",
+    "test": "npm run clean && mocha",
+    "mocha": "mocha",
+    "build-stage": "grunt release --target=testing --force",
+    "build-prod": "grunt release --target=production --force"
+  },
+  "main": "server/server.js",
+  "optionalDependencies": {
+    "fsevents": "^2.3.2"
+  }
+}

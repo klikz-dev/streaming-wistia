@@ -1,0 +1,24 @@
+{
+  "name": "BCCCarousel",
+  "description": "A wrapper around jCarousel",
+  "version": "0.4.2",
+  "private": true,
+  "homepage": "https://github.com/BrightcoveConsultingReusableComponents/Front-End-Carousel",
+  "authors": [
+    "ehynds <ehynds@brightcove.com>"
+  ],
+  "main": "src/carousel.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "2.1.1",
+    "jcarousel": "0.3.1"
+  },
+  "devDependencies": {
+    "underscore": "~1.6.0"
+  }
+}

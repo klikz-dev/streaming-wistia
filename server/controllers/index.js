@@ -1,0 +1,14 @@
+module.exports.home = require('./home');
+module.exports.detail = require('./detail');
+module.exports.category = require('./category');
+module.exports.search = require('./search');
+module.exports.static = require('./static');
+module.exports.svod = require('./svod');
+module.exports.auth = require('./auth');
+module.exports.ugc = require('./ugc');
+module.exports.config = require('./config');
+module.exports.share = require('./share');
+module.exports.sso = require('./sso');
+module.exports.rcache = require('./rcache');
+module.exports.vpop = require('./vpop');
+module.exports.tracking = require('./tracking');

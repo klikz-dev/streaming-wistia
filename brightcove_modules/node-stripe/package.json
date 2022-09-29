@@ -1,0 +1,37 @@
+{
+  "name": "node-stripe",
+  "description": "A wrapper around Stripe to make SVOD easier",
+  "private": true,
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/BrightcoveConsultingReusableComponents/node-stripe.git"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "stripe": "4.23.0",
+    "lodash": "3.10.1",
+    "generaterr": "1.1.2",
+    "moment": "2.10.6",
+    "jquery-deferred": "0.3.1"
+  },
+  "devDependencies": {
+    "chai": "3.2.0",
+    "chai-as-promised": "5.1.0",
+    "mocha": "2.2.5"
+  },
+  "gitHead": "74464cfe322cb207817909311cfbbc231d7b7f39",
+  "readme": "# node-stripe\n\nThis is a wrapper around Stripe to make SVOD easier.\n\n## Usage\n\n```js\nvar stripe = require('node-stripe');\nstripe.init('SECRET_KEY', {\n  // options\n});\n\n// Retrieve all plans\nstripe.getAllPlans().then(function(plans) {\n  // plans is an array of stripe.models.Plan models\n});\n\n// The underlying Stripe library is accessible under the `lib` property:\nstripe.lib.plan.list().then(function(plans) {\n});\n```\n\nTODO: document this more.\n\n## Notes\n\n# Subscriptions are based on tags\n# This lib expects each plan to have the following metadata fields:\n`subscriber_count`, `tags`, `type[svod|tvod]`\n# Each customer is created with a `foreignKey` metadata field\n# Both SVOD and TVOD are achieved by subscribing users to plans. If a plan is of\ntype=tvod, it must also have a $0 currency with one-time amount in a custom\nmetadata field titled `tvod_amount`. The user will be subscribed to the plan and\na charge will created with the amount in the `tvod_amount` metadata field.\n\nThis is somewhat hacky but Stripe doesn't support the notion of one-time payments\nto a plan. That said, there are three advantages to this setup: 1) Stripe remains\nthe source of truth for packages and entitlements, 2) entitlements can be revoked\nby cancelling the subscription, and 3) the code to support both SVOD and TVOD are 99% the same.\n\n## TODO\n\n* Support coupon codes for TVOD plans. The charge amount needs to be calculated manually.\n\n\n## Tests\n\nThere are some basic tests in the `test/` directory, broken down by modules. You can use the command `npm test` to run them all. Alternatively, you can add any tests you don't want to run to the `test/other/` directory and it will be ignored.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/BrightcoveConsultingReusableComponents/node-stripe/issues"
+  },
+  "homepage": "https://github.com/BrightcoveConsultingReusableComponents/node-stripe#readme",
+  "_id": "node-stripe@1.3.1",
+  "_shasum": "bea29c952df1dd22b7179861805730172a2201c9",
+  "_from": "bgs-libraries/node-stripe#develop",
+  "_resolved": "git+https://github.com/bgs-libraries/node-stripe.git#74464cfe322cb207817909311cfbbc231d7b7f39"
+}
